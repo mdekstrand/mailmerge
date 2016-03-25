@@ -1,6 +1,7 @@
 /**
  * Created by MichaelEkstrand on 3/25/2016.
  */
+"use strict";
 const mustache = require('mustache');
 const fs = require('fs');
 const extend = require('extend');
