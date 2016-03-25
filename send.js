@@ -27,7 +27,7 @@ var mf = program.args[0];
 
 var mailer;
 if (program.sendmail) {
-  let sendmail = require('nodemailer-sendmail-transport');
+  var sendmail = require('nodemailer-sendmail-transport');
   logger.info('using mailer {}', program.sendmail);
   mailer = nodemailer.createTransport(sendmail(program.sendmail));
 } else {
