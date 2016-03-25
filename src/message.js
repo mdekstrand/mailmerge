@@ -16,7 +16,7 @@ class Message {
   }
 
   merge(params) {
-    var obj = extend({}, this._meta, params);
+    var obj = extend({}, this.meta, params);
     return new Message(obj, this.body);
   }
 
