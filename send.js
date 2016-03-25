@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 const program = require('commander');
 const nodemailer = require('nodemailer');
 const recipients = require('./src/load-recipients');
