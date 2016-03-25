@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "bin": {
-    "send": "./send.js"
+    "mailmerge-send": "./send.js"
   },
   "dependencies": {
     "async": "^2.0.0-rc.2",
