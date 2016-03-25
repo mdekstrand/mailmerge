@@ -22,3 +22,7 @@ It takes one mandatory argument, the path to a message file.  This should be a t
 The frontmatter should include a `subject` entry.  Both the `subject` and the message body will be interpreted
 as Mustache templates, with the frontmatter and the recipient variables available (recipient variables override
 frontmatter variables).
+
+## Contributing
+
+Bug-fixes, improvements, documentation welcome.
