@@ -11,12 +11,10 @@ const logger = require('glogg')('mailmerge');
 function mergeAndSend(mailer, message, recipients, callback) {
   let tasks = recipients.map((recip) => {
     let merged = message.merge(recip);
-    let mail = {
-      from: merged.meta.from,
-      to: merged.meta.to,
+    let mail = extend({}, merged.meta, {
       subject: merged.subject,
       text: merged.renderedBody
-    };
+    });
     logger.info('sending mail to %s', mail.to);
     return (cb) => mailer.sendMail(mail, cb);
   });
