@@ -10,6 +10,7 @@ const logger = require('glogg')('mailmerge');
 
 program.version('0.0.1')
     .option('--sendmail <path>', 'Use sendmail at [path]')
+    .option('--server <url>', 'Use SMTP server at [url]')
     .option('-r, --recipients <file>', 'Load recipient data from <file>')
     .parse(process.argv);
 
@@ -30,6 +31,10 @@ if (program.sendmail) {
   var sendmail = require('nodemailer-sendmail-transport');
   logger.info('using mailer %s in sendmail mode', program.sendmail);
   mailer = nodemailer.createTransport(sendmail(program.sendmail));
+} else if (program.server) {
+  var smtp = require('nodemailer-smtp-transport');
+  logger.info('using SMTP server');
+  mailer = nodemailer.createTransport(smtp(program.server));
 } else {
   logger.error('no mailer configured');
   process.exit(2);
