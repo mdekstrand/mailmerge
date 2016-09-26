@@ -45,6 +45,8 @@ Regards,
 The Publicity Chairs
 ```
 
-## Contributing
+## Contributing and Extending
 
-Bug-fixes, improvements, documentation welcome.
+`mailmerge` uses nodemailer, so adding support for additional transports such as GMail would not be difficult.
+
+Bug-fixes, improvements, and more documentation welcome.
