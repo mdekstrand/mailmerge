@@ -39,14 +39,14 @@ class Message {
       var headerRE = /^---\r?\n^((?:.|\r?\n)*?)^---\s*\r?\n/m;
       var bodyText = text.toString('utf8');
       var m = bodyText.match(headerRE);
-      if (m == null) {
+      if (!m) {
         return callback(new Error("cannot parse YAML header"));
       }
       var meta = yaml.safeLoad(m[1]);
       var body = bodyText.slice(m[0].length);
       callback(null, new Message(meta, body));
     });
-  };
+  }
 }
 
 module.exports = Message;
