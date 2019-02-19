@@ -4,17 +4,15 @@ const miss = require('mississippi');
 
 function loadJSONLines(file, callback) {
   var lines = [];
-  var stream = miss.to((line, enc, cb) => {
-    lines.push(JSON.parse(line));
-    cb();
-  }, () => {
-    callback(null, lines);
-  });
 
-  fs.createReadStream(file)
-      .pipe(split())
-      .pipe(stream)
-      .on('error', callback);
+  miss.pipe([
+    fs.createReadStream(file),
+    split(),
+    miss.through.obj((line, enc, cb) => cb(null, JSON.parse(line))),
+    miss.to.obj((line, enc, cb) => {lines.push(line); cb()})
+  ], (err) => {
+    callback(err, lines);
+  });
 }
 
 module.exports = {

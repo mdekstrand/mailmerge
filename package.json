@@ -24,7 +24,7 @@
     "extend": "^3.0.0",
     "glogg": "^1.0.0",
     "js-yaml": "^3.5.5",
-    "mississippi": "^1.2.0",
+    "mississippi": "^3.0.0",
     "mustache": "^2.2.1",
     "nodemailer": "^2.3.0",
     "nodemailer-sendmail-transport": "^1.0.0",
