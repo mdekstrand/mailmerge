@@ -14,7 +14,6 @@ program.version('0.0.1')
     .option('--gmailaddress <gmail address>', 'Use GMail with specified address')
     .option('--gmailpassword <gmail password>', 'App password to go with specified GMail address (see https://support.google.com/accounts/answer/185833 on how to generate)')
     .option('-r, --recipients <file>', 'Load recipient data from <file>')
-    .option('
     .parse(process.argv);
 
 logger.on('info', (msg) => {
