@@ -1,6 +1,6 @@
 {
   "name": "mailmerge",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Create and send e-mails",
   "author": {
     "name": "Michael Ekstrand",
