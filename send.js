@@ -40,16 +40,16 @@ if (program.sendmail) {
 } else if (program.gmailaddress) {
   logger.info('using GMail');
   if (program.gmailpassword){
-      var mailer = nodemailer.createTransport({
+    var mailer = nodemailer.createTransport({
 	    service: 'gmail',
 	    auth: {
-		  user: program.gmailaddress,
-		  pass: program.gmailpassword
-        }
-      });
+		    user: program.gmailaddress,
+		    pass: program.gmailpassword
+      }
+    });
   } else {
-      logger.error('using GMail requires a GMail app password (see: https://support.google.com/accounts/answer/185833)');
-      process.exit(2);
+    logger.error('using GMail requires a GMail app password (see: https://support.google.com/accounts/answer/185833)');
+    process.exit(2);
   }
 } else {
   logger.error('no mailer configured');
