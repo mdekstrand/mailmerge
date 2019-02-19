@@ -11,6 +11,8 @@ const logger = require('glogg')('mailmerge');
 program.version('0.0.1')
     .option('--sendmail <path>', 'Use sendmail at [path]')
     .option('--server <url>', 'Use SMTP server at [url]')
+    .option('--gmailaddress <gmail address>', 'Use GMail with specified address')
+    .option('--gmailpassword <gmail password>', 'App password to go with specified GMail address (see https://support.google.com/accounts/answer/185833 on how to generate)')
     .option('-r, --recipients <file>', 'Load recipient data from <file>')
     .parse(process.argv);
 
@@ -35,6 +37,20 @@ if (program.sendmail) {
   var smtp = require('nodemailer-smtp-transport');
   logger.info('using SMTP server');
   mailer = nodemailer.createTransport(smtp(program.server));
+} else if (program.gmailaddress) {
+  logger.info('using GMail');
+  if (program.gmailpassword){
+      var mailer = nodemailer.createTransport({
+	    service: 'gmail',
+	    auth: {
+		  user: program.gmailaddress,
+		  pass: program.gmailpassword
+        }
+      });
+  } else {
+      logger.error('using GMail requires a GMail app password (see: https://support.google.com/accounts/answer/185833)');
+      process.exit(2);
+  }
 } else {
   logger.error('no mailer configured');
   process.exit(2);
